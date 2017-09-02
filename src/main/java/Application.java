@@ -13,7 +13,7 @@ public class Application {
         String connection = getExampleConnection();
         DataSource dataSource = new JsonDataSourceImpl(connection);
         CategoryMapper categoryMapper = new CategoryMapperImpl(dataSource);
-        System.out.println(categoryMapper.getCategoryMapping("vn","tw",8));
+        System.out.println(categoryMapper.getCategoryMapping("vn","th",4));
     }
 
     private static String getExampleConnection() {

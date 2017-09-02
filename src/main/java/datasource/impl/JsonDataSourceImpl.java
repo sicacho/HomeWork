@@ -61,9 +61,14 @@ public class JsonDataSourceImpl implements DataSource {
 
     public Integer getCategoryMapping(String sourceCountry, String destinationCountry, int categoryId) {
         String sourceKey = buildSourceKey(sourceCountry, categoryId);
-        HashMap<String,Integer> CountryCategoryIdsMappingWithSourceKey = categoryCountryMappingDatabase.get(sourceKey);
-        Integer destinationId = CountryCategoryIdsMappingWithSourceKey.get(destinationCountry);
-        return destinationId;
+        HashMap<String,Integer> countryCategoryIdsMappingWithSourceKey = categoryCountryMappingDatabase.get(sourceKey);
+        if(countryCategoryIdsMappingWithSourceKey==null) {
+            return null;
+        } else {
+            Integer destinationId = countryCategoryIdsMappingWithSourceKey.get(destinationCountry);
+            return destinationId;
+        }
+
     }
 
     private String buildSourceKey(String sourceCountry, int categoryId) {
